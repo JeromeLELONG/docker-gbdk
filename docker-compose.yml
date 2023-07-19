@@ -1,0 +1,25 @@
+version: '3.4'
+
+#Apache Proxy Container
+#docker-gbdk:
+ #image: diouxx/apache-proxy
+# build: .
+# container_name: docker-gbdk
+# hostname: docker-gbdk
+# ports:
+#  - "80:80"
+ #- "443:443"
+ #volumes_from:
+ # - proxy-data
+# restart: always
+services:
+    docker-gbdk:
+        #image: cypress/browsers:node12.13.0-chrome78-ff70
+        #image: cypress/browsers:node16.16.0-chrome107-ff107
+        build: .
+        user: '${UID}:${GID}'
+        command: tail -f /dev/null
+        environment:
+            PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/workdir/tobutobugirl/pyimgtogb:/workdir/tobutobugirl/pyimgtogb:/opt/gbdk/bin
+        volumes:
+            - ./data:/data
